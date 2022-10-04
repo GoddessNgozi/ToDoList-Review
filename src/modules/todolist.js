@@ -7,6 +7,7 @@ export default class ToDoList {
   static addTodo(todo) {
     const todos = ToDoList.getTodos();
     todos.push(todo);
+    console.log(todo);
     localStorage.setItem('todos', JSON.stringify(todos));
   }
 
@@ -95,7 +96,7 @@ export default class ToDoList {
     };
 
     static displayTodos = () => {
-      const todos = ToDoList.getTodos();
+      const todos = JSON.parse(localStorage.getItem('todos')) || [];
       todos.forEach((todo) => ToDoList.displayTodo(todo));
     }
 
